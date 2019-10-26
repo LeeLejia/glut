@@ -1,0 +1,73 @@
+/* stylelint-disable */
+@import "./mixin.scss";
+
+.flex-row {
+  @include flexBox(true);
+}
+
+.flex-column {
+  @include flexBox(false);
+}
+
+// font
+.f-normal {
+  font-size: 14px;
+}
+
+.f-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.f-medium {
+  font-size: 16px;
+}
+
+.f-ellipsis {
+  @include fontEllipsis();
+}
+
+// component
+.list {
+  @include removeScrollBar();
+
+  -webkit-overflow-scrolling: "touch";
+}
+
+// active
+.active-light {
+  transition: opacity 0.3;
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+.active-nudge {
+  &:active {
+    position: relative;
+    left: -2px;
+    bottom: -2px;
+  }
+}
+
+.active-scale {
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+* {
+  -webkit-touch-callout: none;
+  padding: 0;
+  margin: 0;
+
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+}

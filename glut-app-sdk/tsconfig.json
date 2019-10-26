@@ -1,0 +1,10 @@
+{
+  "extends": "./config/tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": true
+    // "allowJs": true
+  },
+  "include": ["./src"],
+  "exclude": ["./test", "node_modules"]
+}

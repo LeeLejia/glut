@@ -1,0 +1,112 @@
+/* 避免被外部样式影响 */
+.Glut-App * {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: black;
+  font-weight: normal;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  border: unset;
+  text-align: left;
+}
+.Glut-App {
+  position: fixed;
+  min-width: 300px;
+  background: white;
+  left: 50px;
+  top: 50px;
+  z-index: 9999;
+  cursor: move;
+  border-radius: 4px;
+  border: 1px solid black;
+  padding: 40px 10px 10px 10px;
+  box-shadow: #aab3bb 2px 2px 5px 0px;
+  overflow: hidden;
+}
+.Glut-App ::-webkit-scrollbar {
+  display: none;
+}
+/* 控制条 */
+.Glut-App-controller {
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  width: 65px;
+  height: 25px;
+  border-radius: 13px;
+  border: 1px solid #c3c3c3;
+  display: flex;
+  cursor: pointer;
+  overflow: hidden;
+}
+/* 标题 */
+.Glut-App-title {
+  position: absolute;
+  left: 85px;
+  top: 8px;
+  font-size: 18px;
+  font-weight: 300;
+  width: calc(100% - 95px);
+  height: 25px;
+  line-height: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* 菜单 */
+.Glut-App-menu {
+  position: absolute;
+  z-index: 999;
+  top: 29px;
+  display: none;
+  font-size: 18px;
+  font-weight: 300;
+  min-width: 70px;
+  max-width: 120px;
+  max-height: 200px;
+  overflow: scroll;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border: 1px solid #adadad;
+  left: 15px;
+  background: white;
+  box-shadow: #bbbbbb 2px 2px 4px 0px;
+  text-align: center;
+}
+.Glut-App-menu-item {
+  height: 26px;
+  line-height: 26px;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
+  font-weight: 200;
+  padding: 2px 5px;
+  border-bottom: 1px dashed gray;
+}
+.Glut-App-menu-item:hover {
+  background: #dfdcdc;
+}
+/* 内容区 */
+.Glut-App-content-outer {
+  min-width: 200px;
+  min-height: 200px;
+  cursor: default;
+  border: 1px solid #989898;
+}
+/* 浮动按钮 */
+.Glut-App-floatBt {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 9999;
+  line-height: 56px;
+  text-align: center;
+  border-radius: 50%;
+  display: none;
+}

@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "name": "Glut",
+  "version": "1.0.8",
+  "description": "一款用于团队内部工具开发共享的工具。",
+  "icons": {
+    "16": "assets/img/app-icon.png",
+    "48": "assets/img/app-icon.png",
+    "128": "assets/img/app-icon.png"
+  },
+  "background": {
+    "scripts": ["js/background.js"]
+  },
+  "browser_action": {
+    "default_icon": "assets/img/app-icon.png",
+    "default_title": "chrome小程序团队共享工具",
+    "default_popup": "pages/glut-panel/index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/content-script.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "tabs",
+    "activeTab",
+    "notifications",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "web_accessible_resources": [
+    "js/inject.js",
+    "assets/*",
+    "style/*",
+    "pages/*"
+  ],
+  "default_locale": "zh_CN"
+}

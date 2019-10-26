@@ -1,0 +1,98 @@
+/* stylelint-disable */
+
+/* 超出省略号 */
+@mixin fontEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* flex布局 */
+@mixin flexBox($row: true) {
+  display: flex;
+
+  @if ($row) {
+    flex-direction: row;
+  } @else {
+    flex-direction: column;
+  }
+
+  align-items: center;
+}
+
+/* 前置图标 */
+@mixin beforeIcon($width, $height, $url, $top: 0, $margin: false) {
+  &::before {
+    content: "";
+    display: inline-block;
+    width: $width;
+    height: $height;
+    position: relative;
+    top: $top;
+
+    @if ($margin) {
+      margin: $margin;
+    }
+
+    background: url($url) no-repeat;
+    background-size: cover;
+  }
+}
+
+/* 后置图标 */
+@mixin afterIcon($width, $height, $url, $top: 0, $margin: false) {
+  &::after {
+    content: "";
+    display: inline-block;
+    width: $width;
+    height: $height;
+    position: relative;
+    top: $top;
+
+    @if ($margin) {
+      margin: $margin;
+    }
+
+    background: url($url) no-repeat;
+    background-size: cover;
+  }
+}
+
+// 设置蒙版
+@mixin mask($opacity: 0.6) {
+  &::after {
+    display: block;
+    content: " ";
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: $opacity;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+}
+
+/* 设置背景 */
+@mixin setBg($url) {
+  background: url($url) no-repeat;
+  background-size: cover;
+}
+
+/* 移除滚动条 */
+@mixin removeScrollBar {
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}
+
+/* 多行文本省略 */
+@mixin text-ellipsis-num($width) {
+  max-width: $width;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

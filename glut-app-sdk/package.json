@@ -1,0 +1,19 @@
+{
+  "name": "glut-app-sdk",
+  "version": "1.0.7",
+  "description": "glut-app-sdk",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "rm -fr ./dist && tsc -p tsconfig.json"
+  },
+  "author": "lilejia@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "tslint": "^5.19.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.6.2"
+  },
+  "dependencies": {}
+}
