@@ -2,7 +2,7 @@ console.log('[glut] 注入预置公共脚本！')
 
 // 与content-script 通信，获得系统功能和跨域请求
 const msgPrms = {
-  // id: promisee
+  // id: promise
 }
 
 // 调用远程方法；使用window.postMessage封装成通信组件
@@ -23,7 +23,7 @@ const devilSword = (cmd, ...args) => {
 }
 
 window.addEventListener("message", ({ data }) => {
-  if (!data || typeof data !== 'object' || data.type !== 'warcraft') {
+  if (typeof data !== 'object' || data.type !== 'warcraft') {
     return;
   }
   const body = data.data || {}
@@ -119,12 +119,13 @@ window.$glutInitApp = async (appConfig, context) => {
     listeners.forEach(it => {
       document.body.removeEventListener(it.key, it.event)
     });
-    app.remove();
     // 触发关闭逻辑
     (async () => {
       return lifeCycle.close && lifeCycle.close();
-    })();
-    window.$chromeMiniApps[appId] = undefined
+    })().then(res => {
+      app.remove();
+      window.$chromeMiniApps[appId] = undefined
+    });
   }
   // app 控制区
   const controller = document.createElement('div')

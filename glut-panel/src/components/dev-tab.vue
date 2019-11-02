@@ -124,8 +124,8 @@ export default class extends Vue {
       return;
     }
     const app: App = {
-      id: `debug_${new Date().getTime()}`,
-      name: `debug:${new Date().getTime()}`
+      id: `debug_version`,
+      name: `debug_version`
     };
     // 检查脚本是否有效
     let valid = false;

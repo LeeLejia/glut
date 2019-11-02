@@ -2,7 +2,8 @@
   "extends": "./config/tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "declaration": true
+    "declaration": true,
+    "lib": ["es5", "es2015", "dom"]
     // "allowJs": true
   },
   "include": ["./src"],

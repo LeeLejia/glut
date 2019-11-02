@@ -24,6 +24,7 @@
   padding: 40px 10px 10px 10px;
   box-shadow: #aab3bb 2px 2px 5px 0px;
   overflow: hidden;
+  display: none;
 }
 .Glut-App ::-webkit-scrollbar {
   display: none;
@@ -88,6 +89,9 @@
 .Glut-App-menu-item:hover {
   background: #dfdcdc;
 }
+.Glut-App-menu-item:last-of-type {
+  border-bottom: unset;
+}
 /* 内容区 */
 .Glut-App-content-outer {
   min-width: 200px;
@@ -100,8 +104,9 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: calc(100% - 4px);
-  height: calc(100% - 4px);
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
   font-size: 30px;
   cursor: pointer;
   z-index: 9999;

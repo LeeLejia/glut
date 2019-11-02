@@ -31,6 +31,9 @@ interface ChromeMiniApps {
 
 declare var window: {
   $chromeMiniApps?: ChromeMiniApps;
+  postMessage: Function;
+  addEventListener: Function;
+  removeEventListener: Function;
 };
 
 // 初始化App
@@ -55,10 +58,125 @@ const context = <Context>(
   (window.$chromeMiniApps && window.$chromeMiniApps.context)
 );
 
+// region ==========>>>>>>>>> 页面通信
+// 在页面环境跑代码
+const msgPrms: Record<string, any> = {
+  // id: promise
+};
+function runAtPage(fun: Function): Promise<any> {
+  return new Promise((res) => {
+    const id = "" + new Date().getTime() + Math.random();
+    msgPrms[id] = res;
+    window.postMessage({
+      type: "glut-inject",
+      id: id,
+      script: `(${fun.toString()})();`
+    });
+  });
+}
+function onMessage({ data }: any) {
+  if (typeof data !== "object" || data.type !== "glut-window" || !data.id) {
+    return;
+  }
+  const body = data.data || {};
+  const prm = msgPrms[data.id];
+  if (prm) {
+    prm(body.data);
+    delete msgPrms[body.id];
+  }
+}
+
+// 保存配置
+function saveConfig(obj: { [key: string]: any }): void {
+  // @ts-ignore
+  if (chrome.storage) {
+    // @ts-ignore
+    chrome.storage.sync.get({ [APPID]: {} }, function(result) {
+      // @ts-ignore
+      chrome.storage.sync.set({
+        [APPID]: Object.assign({}, result[APPID], obj)
+      });
+    });
+  }
+}
+
+// 读取配置
+function readConfig(defaultObj: {
+  [key: string]: any;
+}): Promise<{ [key: string]: any }> {
+  return new Promise((res) => {
+    // @ts-ignore
+    chrome.storage.sync.get({ [APPID]: {} }, function(result) {
+      const readResult = result[APPID] || {};
+      res(
+        Object.keys(defaultObj).reduce((rs: any, it) => {
+          rs[it] = readResult.hasOwnProperty(it)
+            ? readResult[it]
+            : defaultObj[it];
+          return rs;
+        }, {})
+      );
+    });
+  });
+}
+
+// 初始化小程序位置
+function initPos() {
+  const dom = document.querySelector(`#Glut-App-${APPID}`);
+  if (dom) {
+    const { clientWidth, clientHeight } = document.body;
+    readConfig({
+      pos_left: Math.round(clientWidth / 2 - dom.clientWidth / 2),
+      pos_top: Math.round(clientHeight / 2 - dom.clientHeight / 2)
+    }).then(({ pos_left, pos_top }) => {
+      console.log({ pos_left, pos_top });
+      // @ts-ignore
+      Object.assign(dom.style, {
+        left: pos_left + "px",
+        top: pos_top + "px",
+        display: "unset"
+      });
+    });
+  }
+}
+
+window.addEventListener("message", onMessage, false);
+// endregion <<<<<<<============= 页面通信
+const closeEvent = function() {
+  // 保存上一个位置
+  const dom = document.querySelector(`#Glut-App-${APPID}`);
+  if (dom) {
+    // @ts-ignore
+    const { offsetTop, offsetLeft } = dom;
+    saveConfig({
+      pos_left: offsetLeft || 0,
+      pos_top: offsetTop || 0
+    });
+  }
+  window.removeEventListener("message", onMessage);
+};
+const lifeCycle = (<AppInfo>appInfo).lifeCycle;
+if (lifeCycle) {
+  lifeCycle.close = closeEvent;
+  lifeCycle.open = initPos;
+}
 // 设置监听
 function setEventListener(name: keyof LifeCycle, callback: Function) {
-  const lifeCycle = (<AppInfo>appInfo).lifeCycle;
   if (lifeCycle) {
+    if (name === "close") {
+      lifeCycle[name] = function() {
+        closeEvent();
+        callback();
+      };
+      return;
+    } else if (name === "open") {
+      lifeCycle[name] = function() {
+        // 初始化位置
+        initPos();
+        callback();
+      };
+      return;
+    }
     lifeCycle[name] = callback;
   }
 }
@@ -87,5 +205,8 @@ export default {
   maxWin: (<AppInfo>appInfo).maxWin,
   minWin: (<AppInfo>appInfo).minWin,
   setMenuList: (<AppInfo>appInfo).setMenuList,
-  Log
+  Log,
+  runAtPage,
+  saveConfig,
+  readConfig
 };

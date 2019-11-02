@@ -1,6 +1,6 @@
 {
   "name": "glut-app-sdk",
-  "version": "1.0.7",
+  "version": "1.0.14",
   "description": "glut-app-sdk",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
