@@ -124,22 +124,22 @@ export default class extends Vue {
       return;
     }
     const app: App = {
-      id: `debug_version`,
+      id: `__GLUT_APP_ID__`,
       name: `debug_version`
     };
     // 检查脚本是否有效
-    let valid = false;
-    script = script.replace(/__GLUT_APP_ID__/g, () => {
-      if (!valid) {
-        valid = true;
-      }
-      return app.id;
-    });
-    if (!valid) {
-      this.loadding = false;
-      this.$message.error("请将小程序界面挂载到#__GLUT_APP_ID__");
-      return;
-    }
+    // let valid = false;
+    // script = script.replace(/__GLUT_APP_ID__/g, () => {
+    //   if (!valid) {
+    //     valid = true;
+    //   }
+    //   return app.id;
+    // });
+    // if (!valid) {
+    //   this.loadding = false;
+    //   this.$message.error("请将小程序界面挂载到#__GLUT_APP_ID__");
+    //   return;
+    // }
     // 调用脚本
     utils.getCurrentTab((tab: any) => {
       console.log("tab:", tab);

@@ -226,7 +226,7 @@ sdk
 <details>
 <summary>sdk.saveConfig、sdk.readConfig</summary>
 
-存取配置
+全局存取配置, 每个小程序的存储空间是单独的，不会自动释放空间，请仅仅用于保存必要的配置信息。
 
 ```javascript
 sdk.saveConfig({
