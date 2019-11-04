@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Glut",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "一款用于团队内部工具开发共享的工具。",
   "icons": {
     "16": "assets/img/app-icon.png",
@@ -29,9 +29,7 @@
     "contextMenus",
     "tabs",
     "activeTab",
-    "notifications",
-    "http://*/*",
-    "https://*/*"
+    "notifications"
   ],
   "web_accessible_resources": [
     "js/inject.js",
