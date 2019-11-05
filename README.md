@@ -14,18 +14,29 @@
 
   ![登陆](doc/img/login.png)
 
+- 可以尝试使用下面的 groupId 进行开发调试体验，但发布需要你独立申请一个 groupId
+  > GroupId: <span style="color: darkorange">5dc0eeb3d1b85c00086c4a42</span>
+
 ## 小应用开发
 
 > glut 应用是一个可以随时在页面打开的小组件，它既可以作为页面的辅助工具或者也可以提供独立的功能。如果你使用过*Tampermonkey*,你会发现 glut 提供了更强大的功能。
 
 glut 应用的开发不限制技术栈，可以在本地开发调试完成后将应用上传。同一个 groupId 的其它人即可同步到更新。
 
+- glut 应用和页面脚本
+
+![原理](doc/img/theory.png)
+
+- 可以通过 glut 应用实现的功能
+
+![能力](doc/img/ability.png)
+
 ### 开发步骤
 
 - 新建项目
 
 > 配置你的前端项目,并确保最终项目被打包为一个文件。  
-> 或者直接使用 [vue 开发模版](https://github.com/LeeLejia/glut-vue-demo),目前仅提供 vue 模版,你可以稍作配置进行 react 或者 angular 项目开发。
+> 或者直接使用 [vue 开发模版](https://github.com/LeeLejia/glut-vue-demo),目前仅提供 vue 模版,你可以稍作配置进行 react 或者 angular 项目开发。 [vue-typescript 开发模版](https://github.com/LeeLejia/glut-vue-demo/tree/typescript-demo)
 
 - 安装 sdk
 
@@ -61,4 +72,39 @@ npm run dev
 > 调试功能正常之后，选择发布->新建小程序,提供小程序信息和发布密码，点击发布。
 
 ![发布](doc/img/publish.png)
+
+> 发布成功后相同 groupId 的成员在下一次打开浏览器时将同步到更新，也可以通过*设置->同步配置*及时获得更新。
+
 ![应用列表](doc/img/applist.png)
+
+## 例子
+
+- cross-demo
+
+[项目仓库](https://github.com/LeeLejia/glut-vue-demo/tree/dev/cross-example)
+
+> 在 npm 向 bing 和百度发起请求
+
+![demo1](doc/img/demo1.png)
+
+- sheetToCode
+
+[项目仓库](https://github.com/LeeLejia/glut-vue-demo/tree/dev/sheetToCode)
+
+> 复制表格生成代码
+
+![demo1](doc/img/demo2.png)
+
+- 多语言自检工具
+
+[项目仓库](https://github.com/LeeLejia/glut-vue-demo/tree/dev/mtlang)
+
+> 基于跨域接口的，文档链接格式检查应用
+
+![demo1](doc/img/demo3.png)
+
+- 微商小工具
+
+> 一个自动转发店铺商品的小应用
+
+![demo1](doc/img/demo4.png)
