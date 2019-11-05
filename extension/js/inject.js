@@ -80,31 +80,37 @@ window.$glutInitApp = async (appConfig, context) => {
     let flag = false
     let lastX = 0
     let lastY = 0
+    let count = 0
     dom.onmousedown = (e) => {
       if (content.contains(e.target)) {
         return
       }
       flag = true
       const event = e || window.event
-      console.log(dom.style.left, dom.style.top)
+      // console.log(dom.style.left, dom.style.top)
       lastX = dom.style.left ? event.clientX - parseInt(dom.style.left, 10) : event.clientX
       lastY = dom.style.top ? event.clientY - parseInt(dom.style.top, 10) : event.clientY
     }
     dom.onmouseup = () => {
-      flag = false
+      if (flag) {
+        flag = false
+      }
     }
     dom.onmouseleave = () => {
-      // flag = false
+      if (flag) {
+        flag = false
+      }
     }
     dom.onmousemove = (e) => {
-      if (!flag) return
+      if (!flag || count++ % 2 !== 0) return
       const event = e || window.event
-      if (event.clientX > lastX && event.clientX < 0 + screen.width - dom.clientWidth + lastX) {
-        dom.style.left = `${event.clientX - lastX}px`
-      }
-      if (event.clientY > lastY && event.clientY < 0 + screen.height - dom.clientHeight + lastY) {
-        dom.style.top = `${event.clientY - lastY}px`
-      }
+      // if (true || event.clientX > lastX && event.clientX < 0 + screen.width - dom.clientWidth + lastX) {
+      //   dom.style.left = `${event.clientX - lastX}px`
+      // }
+      // if (true || event.clientY > lastY && event.clientY < 0 + screen.height - dom.clientHeight + lastY) {
+      //   dom.style.top = `${event.clientY - lastY}px`
+      dom.style.left = `${event.clientX - lastX}px`
+      dom.style.top = `${event.clientY - lastY}px`
     }
   }
   // app
@@ -144,7 +150,7 @@ window.$glutInitApp = async (appConfig, context) => {
     }
     const event = (evn) => {
       if (menu.style.display !== 'none' && !menu.contains(evn.target)) {
-        console.log('none contain')
+        // console.log('none contain')
         menu.style.display = 'none'
       }
     }
@@ -217,7 +223,7 @@ window.$glutInitApp = async (appConfig, context) => {
   floatBt.setAttribute('id', `Glut-App-${appId}-floatBt`)
   floatBt.setAttribute('class', `Glut-App-floatBt`)
   Object.assign(floatBt.style, {
-    border: `2px solid hsl(${Math.ceil(Math.random() * 361)}, 40%, 50%)`,
+    // border: `2px solid hsl(${Math.ceil(Math.random() * 361)}, 40%, 50%)`,
     background: `hsl(${Math.ceil(Math.random() * 361)},60%, 70%)`
   })
   if (appConfig.icon) {

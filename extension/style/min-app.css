@@ -19,6 +19,7 @@
   top: 50px;
   z-index: 9999;
   cursor: move;
+  transition: border-radius 0.8s cubic-bezier(0.16, 0.77, 0.51, 0.99);
   border-radius: 4px;
   border: 1px solid black;
   padding: 40px 10px 10px 10px;

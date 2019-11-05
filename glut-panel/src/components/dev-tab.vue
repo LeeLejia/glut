@@ -125,7 +125,8 @@ export default class extends Vue {
     }
     const app: App = {
       id: `__GLUT_APP_ID__`,
-      name: `debug_version`
+      name: `debug_version`,
+      icon: chrome.extension && chrome.extension.getURL("assets/img/debug.svg")
     };
     // 检查脚本是否有效
     // let valid = false;
