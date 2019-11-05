@@ -8,18 +8,18 @@
 
 - 从[chromeWebStore](https://chrome.google.com/webstore/detail/glut/baggadcfggenanhadoapjamongmhjpla)安装
 
+> 启动应用的时候要求输入一个 groupId
+
 - [发邮件](mailto:cjwddz@gmail.com?subject=Glut&subject=groupID申请&body=滴滴滴～)申请 groupId
 
   > GroupId 申请通道开发中,以后可以直接注册使用
 
-  ![登陆](doc/img/login.png)
+  <!-- ![登陆](doc/img/login.png) -->
 
 - 可以尝试使用下面的 groupId 进行开发调试体验，但发布需要你独立申请一个 groupId
   > GroupId: <span style="color: darkorange">5dc0eeb3d1b85c00086c4a42</span>
 
-> 11 月 5 号，插件还在审核中，估计两天后审核通过才能正常使用。
-
-## 小应用开发
+## Glut 应用开发
 
 > glut 应用是一个可以随时在页面打开的小组件，它既可以作为页面的辅助工具或者也可以提供独立的功能。如果你使用过*Tampermonkey*,你会发现 glut 提供了更强大的功能。
 
@@ -35,53 +35,70 @@ glut 应用的开发不限制前端框架，在项目中引入 sdk，可以在�
 
 ### 开发步骤
 
-- 新建项目
+<!-- 新建项目 -->
 
-> 配置你的前端项目,并确保最终项目被打包为一个文件。  
-> 或者直接使用 [vue 开发模版](https://github.com/LeeLejia/glut-vue-demo),目前仅提供 vue 模版,你可以稍作配置进行 react 或者 angular 项目开发。 [vue-typescript 开发模版](https://github.com/LeeLejia/glut-vue-demo/tree/typescript-demo)
+- <details>
+  <summary>新建项目</summary>
 
-- 安装 sdk
+  > 配置你的前端项目,并确保最终项目被打包为一个文件。  
+  > 或者直接使用 [vue 开发模版](https://github.com/LeeLejia/glut-vue-demo),目前仅提供 vue 模版,你可以稍作配置进行 react 或者 angular 项目开发。 [vue-typescript 开发模版](https://github.com/LeeLejia/glut-vue-demo/tree/typescript-demo)
 
-[sdk API 文档](glut-app-sdk/README.md)
+  - 安装 sdk
 
-```bash
-npm install glut-app-sdk
-```
+    [sdk API 文档](glut-app-sdk/README.md)
 
-- 在项目中引入
+    ```bash
+    npm install glut-app-sdk
+    ```
 
-```javascript
-import sdk from "glut-app-sdk";
-```
+  - 在项目中引入
 
-- 调试
+    ```javascript
+    import sdk from "glut-app-sdk";
+    ```
 
-在面板中选择调试,输入打包后的 js 链接或者文件。  
-在[vue 开发模版](https://github.com/LeeLejia/glut-vue-demo)中，你可以先执行
+  </details>
 
-```bash
-npm install
-npm run dev
-```
+<!-- 调试 -->
 
-然后调试链接设置：http://localhost:5656/build.js  
-点击调试运行应用
+- <details>
+  <summary>调试</summary>
 
-![调试](doc/img/debug.png)
+  在面板中选择调试,输入打包后的 js 链接或者文件。  
+  在[vue 开发模版](https://github.com/LeeLejia/glut-vue-demo)中，你可以先执行
 
-- 发布
+  ```bash
+  npm install
+  npm run dev
+  ```
 
-> 调试功能正常之后，选择发布->新建小程序,提供小程序信息和发布密码，点击发布。
+  然后调试链接设置：http://localhost:5656/build.js  
+  点击调试运行应用
 
-![发布](doc/img/publish.png)
+  ![调试](doc/img/debug.png)
 
-> 发布成功后相同 groupId 的成员在下一次打开浏览器时将同步到更新，也可以通过*设置->同步配置*及时获得更新。
+  </details>
 
-![应用列表](doc/img/applist.png)
+<!-- 发布 -->
 
-## demo
+- <details>
+  <summary>发布</summary>
 
-- cross-demo
+  > 调试功能正常之后，选择发布->新建小程序,提供小程序信息和发布密码，点击发布。
+
+  ![发布](doc/img/publish.png)
+
+  > 发布成功后相同 groupId 的成员在下一次打开浏览器时将同步到更新，也可以通过*设置->同步配置*及时获得更新。
+
+  ![应用列表](doc/img/applist.png)
+
+  </details>
+
+<!-- demo -->
+
+<details>
+
+<summary>demo</summary>
 
 [项目仓库](https://github.com/LeeLejia/glut-vue-demo/tree/dev/cross-example)
 
@@ -110,3 +127,5 @@ npm run dev
 > 一个自动转发店铺商品的小应用
 
 ![demo1](doc/img/demo4.png)
+
+</details>
