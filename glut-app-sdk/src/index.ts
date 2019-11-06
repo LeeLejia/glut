@@ -34,6 +34,8 @@ declare var window: {
   postMessage: Function;
   addEventListener: Function;
   removeEventListener: Function;
+  innerHeight: number;
+  innerWidth: number;
 };
 
 // 初始化App
@@ -124,10 +126,9 @@ function readConfig(defaultObj: {
 function initPos() {
   const dom = document.querySelector(`#Glut-App-${APPID}`);
   if (dom) {
-    const { clientWidth, clientHeight } = document.body;
     readConfig({
-      pos_left: Math.round(clientWidth / 2 - dom.clientWidth / 2),
-      pos_top: Math.round(clientHeight / 2 - dom.clientHeight / 2)
+      pos_left: Math.round(window.innerWidth / 2 - dom.clientWidth / 2),
+      pos_top: Math.round(window.innerHeight / 2 - dom.clientHeight / 2)
     }).then(({ pos_left, pos_top }) => {
       console.log({ pos_left, pos_top });
       // @ts-ignore
