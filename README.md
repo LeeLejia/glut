@@ -37,68 +37,70 @@ glut 应用的开发不限制前端框架，在项目中引入 sdk，可以在�
 
 <!-- 新建项目 -->
 
-- <details>
+<details>
   <summary>新建项目</summary>
 
-  > 配置你的前端项目,并确保最终项目被打包为一个文件。  
-  > 或者直接使用 [vue 开发模版](https://github.com/LeeLejia/glut-vue-demo),目前仅提供 vue 模版,你可以稍作配置进行 react 或者 angular 项目开发。 [vue-typescript 开发模版](https://github.com/LeeLejia/glut-vue-demo/tree/typescript-demo)
+> 配置你的前端项目,并确保最终项目被打包为一个文件。  
+> 或者直接使用 [vue 开发模版](https://github.com/LeeLejia/glut-vue-demo),目前仅提供 vue 模版,你可以稍作配置进行 react 或者 angular 项目开发。 [vue-typescript 开发模版](https://github.com/LeeLejia/glut-vue-demo/tree/typescript-demo)
 
-  - 安装 sdk
+- 安装 sdk
 
-    [sdk API 文档](glut-app-sdk/README.md)
+  [sdk API 文档](glut-app-sdk/README.md)
 
-    ```bash
-    npm install glut-app-sdk
-    ```
+  ```bash
+  npm install glut-app-sdk
+  ```
 
-  - 在项目中引入
+- 在项目中引入
 
-    ```javascript
-    import sdk from "glut-app-sdk";
-    ```
+  ```javascript
+  import sdk from "glut-app-sdk";
+  ```
 
   </details>
 
 <!-- 调试 -->
 
-- <details>
+<details>
   <summary>调试</summary>
 
-  在面板中选择调试,输入打包后的 js 链接或者文件。  
-  在[vue 开发模版](https://github.com/LeeLejia/glut-vue-demo)中，你可以先执行
+在面板中选择调试,输入打包后的 js 链接或者文件。  
+ 在[vue 开发模版](https://github.com/LeeLejia/glut-vue-demo)中，你可以先执行
 
-  ```bash
-  npm install
-  npm run dev
-  ```
+```bash
+npm install
+npm run dev
+```
 
-  然后调试链接设置：http://localhost:5656/build.js  
-  点击调试运行应用
+然后调试链接设置：http://localhost:5656/build.js  
+ 点击调试运行应用
 
-  ![调试](doc/img/debug.png)
+![调试](doc/img/debug.png)
 
   </details>
 
 <!-- 发布 -->
 
-- <details>
+<details>
   <summary>发布</summary>
 
-  > 调试功能正常之后，选择发布->新建小程序,提供小程序信息和发布密码，点击发布。
+> 调试功能正常之后，选择发布->新建小程序,提供小程序信息和发布密码，点击发布。
 
-  ![发布](doc/img/publish.png)
+![发布](doc/img/publish.png)
 
-  > 发布成功后相同 groupId 的成员在下一次打开浏览器时将同步到更新，也可以通过*设置->同步配置*及时获得更新。
+> 发布成功后相同 groupId 的成员在下一次打开浏览器时将同步到更新，也可以通过*设置->同步配置*及时获得更新。
 
-  ![应用列表](doc/img/applist.png)
+![应用列表](doc/img/applist.png)
 
   </details>
 
 <!-- demo -->
 
+## DEMO
+
 <details>
 
-<summary>demo</summary>
+<summary>cross-example</summary>
 
 [项目仓库](https://github.com/LeeLejia/glut-vue-demo/tree/dev/cross-example)
 
@@ -106,7 +108,11 @@ glut 应用的开发不限制前端框架，在项目中引入 sdk，可以在�
 
 ![demo1](doc/img/demo1.png)
 
-- sheetToCode
+</details>
+
+<details>
+
+<summary>sheetToCode</summary>
 
 [项目仓库](https://github.com/LeeLejia/glut-vue-demo/tree/dev/sheetToCode)
 
@@ -114,7 +120,11 @@ glut 应用的开发不限制前端框架，在项目中引入 sdk，可以在�
 
 ![demo1](doc/img/demo2.png)
 
-- 多语言自检工具
+</details>
+
+<details>
+
+<summary>多语言自检工具</summary>
 
 [项目仓库](https://github.com/LeeLejia/glut-vue-demo/tree/dev/mtlang)
 
@@ -122,7 +132,10 @@ glut 应用的开发不限制前端框架，在项目中引入 sdk，可以在�
 
 ![demo1](doc/img/demo3.png)
 
-- 微商小工具
+</details>
+
+<details>
+<summary>微商小工具</summary>
 
 > 一个自动转发店铺商品的小应用
 
