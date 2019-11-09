@@ -255,6 +255,10 @@ sdk.Log("obj:", { a: 22, b: 44 });
 
 ## change log
 
+- 1.0.18
+
+> 打开时`opactiy`渐变
+
 - 1.0.17
 
 > 解决`display: none`时获取不到视图宽高

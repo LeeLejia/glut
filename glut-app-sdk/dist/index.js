@@ -101,7 +101,9 @@ function initPos() {
     if (dom) {
         // @ts-ignore
         Object.assign(dom.style, {
-            display: "unset"
+            display: "unset",
+            transition: "opacity 0.3s linear, border-radius 0.8s cubic-bezier(0.16, 0.77, 0.51, 0.99)",
+            opacity: 0
         });
         readConfig({
             pos_left: Math.round(window.innerWidth / 2 - dom.clientWidth / 2),
@@ -112,7 +114,8 @@ function initPos() {
             // @ts-ignore
             Object.assign(dom.style, {
                 left: Math.min(pos_left, window.innerWidth - dom.clientWidth - 10) + "px",
-                top: Math.min(pos_top, window.innerHeight - dom.clientHeight - 10) + "px"
+                top: Math.min(pos_top, window.innerHeight - dom.clientHeight - 10) + "px",
+                opacity: 1
             });
         });
     }
