@@ -126,6 +126,10 @@ function readConfig(defaultObj: {
 function initPos() {
   const dom = document.querySelector(`#Glut-App-${APPID}`);
   if (dom) {
+    // @ts-ignore
+    Object.assign(dom.style, {
+      display: "unset"
+    });
     readConfig({
       pos_left: Math.round(window.innerWidth / 2 - dom.clientWidth / 2),
       pos_top: Math.round(window.innerHeight / 2 - dom.clientHeight / 2)
@@ -133,9 +137,10 @@ function initPos() {
       console.log({ pos_left, pos_top });
       // @ts-ignore
       Object.assign(dom.style, {
-        left: Math.min(pos_left, window.innerWidth - dom.clientWidth) + "px",
-        top: Math.min(pos_top, window.innerHeight - dom.clientHeight) + "px",
-        display: "unset"
+        left:
+          Math.min(pos_left, window.innerWidth - dom.clientWidth - 10) + "px",
+        top:
+          Math.min(pos_top, window.innerHeight - dom.clientHeight - 10) + "px"
       });
     });
   }
