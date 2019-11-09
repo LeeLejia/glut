@@ -133,8 +133,8 @@ function initPos() {
       console.log({ pos_left, pos_top });
       // @ts-ignore
       Object.assign(dom.style, {
-        left: pos_left + "px",
-        top: pos_top + "px",
+        left: Math.min(pos_left, window.innerWidth - dom.clientWidth) + "px",
+        top: Math.min(pos_top, window.innerHeight - dom.clientHeight) + "px",
         display: "unset"
       });
     });
