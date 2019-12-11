@@ -10,11 +10,15 @@
 
 > 启动应用的时候要求输入一个 groupId
 
-- [发邮件](mailto:cjwddz@gmail.com?subject=Glut&subject=groupID申请&body=滴滴滴～)申请 groupId
+![登陆](doc/img/login.png)
 
-  > GroupId 申请通道开发中,以后可以直接注册使用
+- 使用邮箱申请 `GroupId`
 
-  <!-- ![登陆](doc/img/login.png) -->
+  > [点击申请链接](https://leelejia.github.io/sites/glut?page=regiest)
+
+- 查看 `GroupId`
+
+  > [点击查看 GroupId](https://leelejia.github.io/sites/glut?page=regiest)
 
 - 可以尝试使用下面的 groupId 进行开发调试体验，但发布需要你独立申请一个 groupId
   > GroupId: <span style="color: darkorange">5dc0eeb3d1b85c00086c4a42</span>
