@@ -21,8 +21,11 @@
         </Tooltip>
       </div>
     </div>
-    <div class="empty flex-row" v-if="!appList || appList.length === 0"></div>
-    <div class="version">{{version}}</div>
+    <div class="empty flex-row" v-if="!appList || appList.length === 0">当前没有应用</div>
+    <div class="version">
+      {{version}} @
+      <a href="https://github.com/LeeLejia/glut" target="_blank">开源代码</a>
+    </div>
   </div>
 </template>
 
@@ -55,10 +58,8 @@ export default class extends Vue {
   appList: App[] = [];
   version: string = config.version;
   created() {
-    // 获取app列表
-    // 定义在main.ts
     // @ts-ignore
-    utils.getAppList.then(appList => {
+    utils.getAppList().then(appList => {
       this.appList = appList;
     });
     chrome.storage.sync.get({ groupId: "" }, (res: { groupId: string }) => {
@@ -174,13 +175,15 @@ export default class extends Vue {
   .empty {
     width: 200px;
     height: 200px;
-    margin: auto;
+    margin: 10px auto 40px auto;
+    align-items: flex-end;
+    justify-content: center;
 
     @include setBg("../assets/img/empty.svg");
   }
 
   .version {
-    color: #cecece;
+    color: #a9a9a9;
     text-align: center;
   }
 }

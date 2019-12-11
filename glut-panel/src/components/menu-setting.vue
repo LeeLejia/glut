@@ -16,6 +16,7 @@
         v-model="groupId_edit"
         placeholder="请设定GroupId"
         @on-click="question"
+        autocomplete
       />
       <i-button type="primary" shape="circle" :loading="handle" @click="confirm">OK</i-button>
     </div>
@@ -29,6 +30,8 @@
     </div>
     <!-- 同步配置 -->
     <div class="setting-item flex-row sync-config">
+      <i-button shape="circle" class="bt clear-bt" type="dashed" @click="clearCache">清除缓存</i-button>
+
       <i-button
         shape="circle"
         class="bt"
@@ -91,19 +94,29 @@ export default class extends Vue {
       title: "获取GroupId",
       render: (h: any) => {
         return h("span", [
-          "邮件至",
+          "选择以下方式 ",
           h(
             "a",
-            { attrs: { href: "mailto:cjwddz@gmail.com" } },
-            "cjwddz@gmail.com"
+            {
+              attrs: {
+                href: "https://leelejia.github.io/sites/glut/?page=getId",
+                target: "_blank"
+              }
+            },
+            "通过邮箱查询"
           ),
-          "或",
+          " 或 ",
           h(
             "a",
-            { attrs: { href: "mailto:lilejia@bigo.sg" } },
-            "lilejia@bigo.sg"
+            {
+              attrs: {
+                href: "https://leelejia.github.io/sites/glut/?page=regiest",
+                target: "_blank"
+              }
+            },
+            "注册GroupId"
           ),
-          "获取GroupId"
+          " 获取GroupId"
         ]);
       },
       duration: 15000
@@ -123,12 +136,17 @@ export default class extends Vue {
       this.$message.success("更新成功！");
     });
   }
+  clearCache(): void {
+    localStorage.clear();
+    chrome.storage.sync.clear();
+    this.$message.success("已清空缓存!");
+  }
   changeAutoUpdate(): void {
     chrome.storage.sync.set({ AutoUpdate: this.autoUpdate });
   }
   // methods
   confirm(): void {
-    if (!this.groupId_edit) {
+    if (!this.groupId_edit.trim()) {
       this.$message.error("请输入先groupId");
       return;
     }
@@ -140,7 +158,7 @@ export default class extends Vue {
       content: "同步配置中...",
       duration: 0
     });
-    utils.RMI("updateConfig", this.groupId_edit).then((res: any) => {
+    utils.RMI("updateConfig", this.groupId_edit.trim()).then((res: any) => {
       msg();
       this.handle = false;
       this.showModifyBox = false;
@@ -191,6 +209,11 @@ export default class extends Vue {
     margin-right: auto;
     padding: 10px 0;
     border-bottom: 1px solid #147dea; // #dadada;
+
+    .clear-bt {
+      margin-right: 20px;
+    }
+
     .info {
       flex: 1;
       .name {

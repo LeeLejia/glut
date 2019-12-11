@@ -142,7 +142,7 @@ function getCurrentTab(callback: (args: Number) => void) {
 
 export default {
   RMI,
-  getAppList: updateApp(),
+  getAppList: updateApp,
   getCurrentTab,
   loadApp
 };

@@ -18,11 +18,9 @@
       </MenuItem>
     </Menu>
     <div class="content">
-      <keep-alive>
-        <menuApp v-if="selectTab === 'apps'" key="apps"></menuApp>
-        <menuDev v-else-if="selectTab === 'script-manage'" key="script-manage"></menuDev>
-        <menuSetting v-else-if="selectTab === 'setting'" key="setting"></menuSetting>
-      </keep-alive>
+      <menuApp v-if="selectTab === 'apps'"></menuApp>
+      <menuDev v-else-if="selectTab === 'script-manage'"></menuDev>
+      <menuSetting v-else-if="selectTab === 'setting'"></menuSetting>
     </div>
   </div>
 </template>

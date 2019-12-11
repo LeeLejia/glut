@@ -1,6 +1,6 @@
 <template>
   <div class="groupId-input-container">
-    <div class="title f-normal">Set up your groupId to get services</div>
+    <div class="title f-normal">通过设置 GroupId 获取你的 Glut 应用</div>
     <div class="input-box flex-row">
       <i-input
         class="groupid-input"
@@ -8,6 +8,7 @@
         v-model="groupId"
         placeholder="请设定GroupId"
         @on-click="question"
+        autocomplete
       />
       <i-button type="primary" shape="circle" :loading="handle" @click="confirm">OK</i-button>
     </div>
@@ -54,19 +55,29 @@ export default class extends Vue {
       title: "获取GroupId",
       render: (h: any) => {
         return h("span", [
-          "邮件至",
+          "选择以下方式 ",
           h(
             "a",
-            { attrs: { href: "mailto:cjwddz@gmail.com" } },
-            "cjwddz@gmail.com"
+            {
+              attrs: {
+                href: "https://leelejia.github.io/sites/glut/?page=getId",
+                target: "_blank"
+              }
+            },
+            "通过邮箱查询"
           ),
-          "或",
+          " 或 ",
           h(
             "a",
-            { attrs: { href: "mailto:lilejia@bigo.sg" } },
-            "lilejia@bigo.sg"
+            {
+              attrs: {
+                href: "https://leelejia.github.io/sites/glut/?page=regiest",
+                target: "_blank"
+              }
+            },
+            "注册GroupId"
           ),
-          "获取GroupId"
+          " 获取GroupId"
         ]);
       },
       duration: 15000
@@ -74,7 +85,7 @@ export default class extends Vue {
   }
   // methods
   confirm(): void {
-    if (!this.groupId) {
+    if (!this.groupId.trim()) {
       this.$message.error("请输入先groupId");
       return;
     }
@@ -83,7 +94,7 @@ export default class extends Vue {
       content: "同步配置中...",
       duration: 0
     });
-    utils.RMI("updateConfig", this.groupId).then((res: any) => {
+    utils.RMI("updateConfig", this.groupId.trim()).then((res: any) => {
       msg();
       this.handle = false;
       if (res.status !== 0) {
@@ -107,7 +118,7 @@ export default class extends Vue {
 
   .title {
     margin-bottom: 20px;
-    text-align: center;
+    text-align: left;
     color: #aaaaaa;
   }
 

@@ -53,10 +53,8 @@ export default class extends Vue {
   handle: boolean = false;
   appList: App[] = [];
   created() {
-    // 获取app列表
-    // 定义在main.ts
     // @ts-ignore
-    utils.getAppList.then(appList => {
+    utils.getAppList().then(appList => {
       this.appList = appList;
     });
     chrome.storage.sync.get({ groupId: "" }, (res: { groupId: string }) => {
