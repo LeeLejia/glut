@@ -20,8 +20,8 @@ const storageReady = runCustomJsFile('js/av-min.js')
 storageReady.then(() => {
 	// 初始化
 	AV.init({
-		appId: "__appId", // 这里替换自己的appId，在 leancloud上申请
-		appKey: "__appKey" // 替换appkey
+		appId: "MyE54xA8SJbJjvYdKzhVdc6M-MdYXbMMI",
+		appKey: "SvCuPdNhCYzNnwcYM80LTrTo"
 	})
 })
 
@@ -31,16 +31,6 @@ const remoteMethods = {
 	notice(id, options) {
 		// https://crxdoc-zh.appspot.com/extensions/notifications
 		chrome.notifications.create(id, options)
-	},
-	saveConfig(obj) {
-		chrome.storage.sync.set(obj || {});
-	},
-	readConfig(defaultObj) {
-		return new Promise(res => {
-			chrome.storage.sync.get(defaultObj, function (result) {
-				res(result);
-			})
-		});
 	},
 	// 设置角标
 	setBadgeText(text = '', color = [0, 0, 0, 0]) {
