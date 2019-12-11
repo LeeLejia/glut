@@ -146,3 +146,7 @@ npm run dev
 ![demo1](doc/img/demo4.png)
 
 </details>
+
+## Glut 小程序调试发布流程
+
+<iframe height=498 width=510 src='http://player.youku.com/embed/XNDQ2NTU0NjgyOA==' frameborder=0 'allowfullscreen'></iframe>
