@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Glut",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "一款用于团队内部工具开发共享的工具。",
   "icons": {
     "16": "assets/img/app-icon.png",
