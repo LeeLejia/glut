@@ -20,8 +20,8 @@ const storageReady = runCustomJsFile('js/av-min.js')
 storageReady.then(() => {
 	// 初始化
 	AV.init({
-		appId: "MyE54xA8SJbJjvYdKzhVdc6M-MdYXbMMI",
-		appKey: "SvCuPdNhCYzNnwcYM80LTrTo"
+		appId: "your appId",
+		appKey: "your appkey"
 	})
 })
 
