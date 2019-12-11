@@ -149,4 +149,6 @@ npm run dev
 
 ## Glut 小程序调试发布流程
 
-<video width=600 src='http://player.youku.com/embed/XNDQ2NTU0NjgyOA==' controls="controls" autoplay>调试发布</video>
+> [youku 视频](http://player.youku.com/embed/XNDQ2NTU0NjgyOA==)
+
+[![youtube](doc/img/video.gif)](https://youtu.be/V-39E8RQXZE)
