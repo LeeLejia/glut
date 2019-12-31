@@ -4,6 +4,8 @@
 
 该项目旨在方便的进行 chrome 拓展应用开发和分享。相当于一套运行在 chrome 上的小程序框架，它提供了比页面脚本更多的 Api。
 
+申请groupId即可开发、发布自己的glut小应用。该项目提供了glut小应用的调试开发方法。拥有同一个groupId的成员可以共享glut小应用。
+
 ## 安装
 
 - 从[chromeWebStore](https://chrome.google.com/webstore/detail/glut/baggadcfggenanhadoapjamongmhjpla)安装
